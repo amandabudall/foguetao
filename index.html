@@ -4,136 +4,142 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foguete</title>
+    <title>Foguetinhoooooooooo</title>
     <style>
-        body{
+        body
+        {
             width: 100%;
-            height: 100vh;
-            background-image: linear-gradient(darkblue, black);
+            height: 140vh;
             overflow: hidden;
+            background-image: linear-gradient(180deg, rgb(11, 57, 155), rgb(194, 125, 79));
         }
         .foguete
         {
             position: absolute;
-            top: 690px;
-            left: 760px;
+            top: 48%;
+            left: 48%;
         }
-        .terra
+        .chao
         {
             position: absolute;
-            top: 600px;
-            left: 725px;
+            top: 55%;
+            left: 40%;
         }
         .nome
         {
-            background-color: rgb(190, 199, 209);
+            border: 3px solid white;
             color: white;
+            background-color: rgb(11, 57, 155);
             font-size: 20px;
-            height: 22px;
-            padding-left: 10px;
-            width: 98%;
+            font-family: Verdana;
+            height: 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 94%;
+            left: 69%;
+            position: absolute;
+            width: 30%;
+
         }
     </style>
 </head>
 <body>
-    
-    <img id="terra" src="terra.png" width="200px" class="terra">
-    <img id="foguete" src="foguete.gif" width="80px" class="foguete">
-    <div class="nome">Gustavo Dobrotinick Ribeiro</div>
+    <img src="terra.png" id="chao" width="20%"  class="chao">
+    <img src="foguete.gif" id="foguete" width="80px" class="foguete" onclick="Foguetao()">
+    <div class="nome">Amanda Budal Arins de Lima</div>
 </body>
-
-<script src="jquery-3.6.4.min.js"></script>
+<script src="jquery-3.7.0.min.js"></script>
 <script>
+    function Foguetao(){
+    var audio = new Audio('contagem_regressiva.mp3');
+    var audio2 = new Audio('lancamento_foguete.mp3');
+    var audio3 = new Audio('main_houston_problem.mp3');
 
-    var audio = new Audio('conta_regre.mp3');
-    var audio2 = new Audio('lanc_fogue.mp3');
-    var audio3 = new Audio('we-have-a-problam.mp3');
-    
-    function playAudio()
+    function playAudio() 
     {
         audio.play();
     }
     setTimeout(playAudio, 500)
 
-    function playAudio2()
+    function playAudio2() 
     {
-          audio2.play();
+        audio2.play();
     }
-    setTimeout(playAudio, 15000)
+    setTimeout(playAudio2, 15000)
 
     function pausarAudio()
     {
-        audio.play();
+        audio.pause()
     }
     setTimeout(pausarAudio, 15000)
 
     function pausarAudio2()
     {
-        audio2.play();
+        audio2.pause()
     }
-    setTimeout(pausarAudio, 20000)
+    setTimeout(pausarAudio2, 20000)
 
     function playAudio3() 
     {
         audio3.play();
     }
     setTimeout(playAudio3, 20000)
-    
 
-data = new Date()
-tempo_inicial = data.getTime()
 
-document.onkeydown = Pega_Tecla;
-
-function Pega_Tecla(e) 
-{	    
-    e = e || window.event;
-
-    tecla = e.keyCode;
-    console.log(tecla); // MOSTRA O CÓDIGO DA TECLA PRESSIONADA
-    
     data = new Date()
-    tempo_final = data.getTime() //time em milissegundos
-    
-    if(tempo_final - tempo_inicial > 1000)
+    tempo_inicial = data.getTime()
+
+    document.onkeydown = Pega_Tecla;
+    function Pega_Tecla(e) 
     {
-        tempo_inicial = tempo_final
+        e = e || window.event;
+
+        tecla = e.keyCode;
+        console.log(tecla); // MOSTRA O CÓDIGO DA TECLA PRESSIONADA
         
-        if(tecla == 37)
+        data = new Date()
+        tempo_final = data.getTime()
+
+        if(tempo_final - tempo_inicial > 1000)
         {
-            x = x - 20
-        }
-        if(tecla == 39)
-        {
-            x = x + 20
+            tempo_inicial = tempo_final
+            if(tecla == 37)
+            {
+                x = x - 20
+            }
+            if(tecla == 39)
+            {
+                x = x + 20
+            }
         }
     }
-}
-     temporizador = setTimeout(Subir,15000)
 
-    x = 760
-    y = 20
-    topo =  ""
-    esquerda = ""
+    teleporizador= setTimeout(Subir, 15000)
+    x = 43;
+    y = 10;
+    TOPO = "";
+    esquerda = "";
+
     function Subir()
-    {
-        topo = y + "px"
-        $("#foguete").animate({top: topo}, 5000)
+    {    
+        TOPO = y + "%";
+        $("#foguete").animate({top:TOPO}, 5000)
         temporizador = null
         temporizador = setInterval(Descer, 1000)
     }
     function Descer()
     {
-        y = y + 80
-        esquerda = x + "px"
-        if(y>600)
+        y = y + 5
+        TOPO = y + "%"
+        esquerda = x + "%"
+        $("#foguete").animate({left:esquerda,top:TOPO},1000)
+        if(y > 40)
         {
-            y = 600
+            y = 40;
         }
-        topo = y + "px"
-        $("#foguete").animate({left:esquerda,top: topo},1000)
-        
     }
+    }
+    
 </script>
-
 </html>
